@@ -30,7 +30,7 @@ Follow these simple steps to run the project locally:
 ### 1. Clone the Repo
 
 ```bash
-git clone link
+git clone https://github.com/Nirmalkumar25/ledger-api.git
 cd ledger-api
 ```
 
