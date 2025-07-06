@@ -1,2 +1,2 @@
-DATABASE_URL = "postgresql://postgres:1234@localhost:5432/postgres"
+DATABASE_URL = "postgresql://<username>:<password>@<host>:<port>/<database_name>"
 RATE_LIMIT = 100
