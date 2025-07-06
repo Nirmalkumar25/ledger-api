@@ -118,7 +118,7 @@ INSERT INTO column_visibility VALUES
 ## Try a Sample API Call
 
 ```http
-GET /search?entity_id=1&name=nirmal&address=mayiladu
+GET /search?entity_id=1&name=nirmal&area=mayiladu
 ```
 
 The response will include only the columns allowed for `entity_id=1`.
