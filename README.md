@@ -45,10 +45,26 @@ venv\Scripts\activate
 ### 3. Install the Required Packages
 
 ```bash
-pip install fastapi uvicorn sqlalchemy
+pip install fastapi uvicorn sqlalchemy psycopg2
+```
+### 4. PostgreSQL Database Setup
+
+Ensure you have a PostgreSQL database running. Create a database named `ledger_db` (or any name of your choice).
+
+### 5. Add Your PostgreSQL Database URL
+
+Edit the `config.py` file and add your database connection string:
+
+```python
+DATABASE_URL = "postgresql://<username>:<password>@<host>:<port>/<database_name>"
 ```
 
-### 4. Start the Server
+**Example:**
+
+```python
+DATABASE_URL = "postgresql://postgres:1234@localhost:5432/ledger_db"
+```
+### 6. Start the Server
 
 ```bash
 uvicorn main:app --reload
@@ -75,7 +91,7 @@ ledger-api/
 
 ## Sample SQL Data
 
-### Create Tables
+### Create Tables (If not created)
 
 ```sql
 CREATE TABLE ledger_entries (
@@ -102,15 +118,15 @@ CREATE TABLE column_visibility (
 
 ```sql
 INSERT INTO ledger_entries VALUES
-(1, 1, 'MTY-A10000', '2025-06-24', 'C-00009', 'Nirmal', 'mayiladu', '9876543210', 'Gold Chains, Gold Bangles', 25000),
-(2, 2, 'MTY-C10001', '2025-07-05', 'C-00010', 'Divya', 'Thanjavur', '9123456780', 'Gold Necklace', 30000),
-(3, 3, 'MTY-C10002', '2025-07-06', 'C-00011', 'Priya', 'Trichy', '8987654321', 'Silver Anklets', 10000);
+(1, 1, 'MTY-A10000', '2025-06-24', 'C-00009', 'Nirmal', 'mayiladu', 'Gold Chains, Gold Bangles', 25000, '9876543210'),
+(2, 2, 'MTY-C10001', '2025-07-05', 'C-00010', 'Divya', 'Thanjavur', 'Gold Necklace', 30000, '9123456780'),
+(3, 3, 'MTY-C10002', '2025-07-06', 'C-00011', 'Priya', 'Trichy', 'Silver Anklets', 10000, '8987654321');
 
 INSERT INTO column_visibility VALUES
-(1, 'loan_no'), (1, 'disbursement_date'), (1, 'customer_id'),
-(1, 'name'), (1, 'address'), (1, 'particulars'), (1, 'mobile_number'),
-(2, 'loan_no'), (2, 'customer_id'), (2, 'name'), (2, 'particulars'),
-(3, 'loan_no'), (3, 'name'), (3, 'particulars');
+(1,1, 'loan_no'), (2,1, 'disbursement_date'), (3,1, 'customer_id'),
+(4,1, 'name'), (5,1, 'address'), (6,1, 'particulars'), (7,1, 'mobile_number'),
+(8,2, 'loan_no'), (9,2, 'customer_id'), (10,2, 'name'), (11,2, 'particulars'),
+(12,3, 'loan_no'), (13,3, 'name'), (14,3, 'particulars');
 ```
 
 ---
